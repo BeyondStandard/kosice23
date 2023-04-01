@@ -1,12 +1,12 @@
 {
-  "name": "ht22_frontend",
+  "name": "kosice23_frontend",
   "description": "Frontend application with react",
   "version": "1.0.0",
   "author": "Gilles Tanson",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/BeyondStandard/kosice23"
   },
   "keywords": [
     "react",
@@ -16,7 +16,7 @@
     "typescript"
   ],
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint src",
@@ -58,7 +58,7 @@
   },
   "devDependencies": {
     "@types/mapbox-gl": "^2.7.8",
-    "@types/node": "^18.8.4",
+    "@types/node": "^18.15.11",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.40.0",

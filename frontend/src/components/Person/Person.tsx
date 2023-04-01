@@ -13,7 +13,7 @@ import type { PersonProps } from "./types"
 export function Person({ prop = "Person" }: PersonProps) {
   return (
     <div className="w-full bg-black flex flex-col overflow-hidden">
-      <div style={{ width: "100%", marginBottom: "50px"}}>
+      <div style={{ width: "100%", marginBottom: "50px" }}>
         <Typography
           gutterBottom
           variant="h2"

@@ -2,9 +2,8 @@ import Switch from "@mui/material/Switch"
 import React, { ReactNode } from "react"
 
 import { Footer } from "~/components/Footer"
+import { ChargerEntry, StationEntry, UserEntry } from "~/components/ItemEntries"
 import { ItemIcon } from "~/components/ItemIcon"
-import { ItemType, AreaInfo } from "~/controllers/definitions"
-import { UserEntry, ChargerEntry, StationEntry } from "~/components/ItemEntries"
 
 import { DashboardBox } from "../DashboardBox"
 import { Map } from "../Map"
@@ -16,6 +15,7 @@ import {
   chargersToMapItems,
   useChargers,
 } from "~/controllers/chargers"
+import { AreaInfo, ItemType } from "~/controllers/definitions"
 import {
   stationsToListItems,
   stationsToMapItems,
@@ -84,7 +84,7 @@ export function Dashboard({ prop = "Dashboard" }: DashboardProps) {
           <DashboardBox>
             <Map
               users={usersToMapItems(showUsers ? users ?? [] : [])}
-              chargers={chargersToMapItems(showChargers ? (chargers ?? []) : [])}
+              chargers={chargersToMapItems(showChargers ? chargers ?? [] : [])}
               stations={stationsToMapItems(showStations ? stations ?? [] : [])}
               allItems={{
                 users: users,
@@ -97,25 +97,30 @@ export function Dashboard({ prop = "Dashboard" }: DashboardProps) {
           </DashboardBox>
         </div>
         <div className="h-full w-3/12 px-1.5">
-            {selectedArea != null && (
-                <DashboardBox title={selectedArea.areaName}>
-                    <div className="w-full h-full overflow-y-auto">
-                        <div className="w-full">
-                            {selectedArea.users.map((user) => <UserEntry
-                                key={user.id}
-                                user={user}
-                                onChangeUser={onChangeUser}
-                            />)}
-                            {/* {getAllChargers(selectedArea.chargers).map((charger) => <ChargerEntry key={charger.id} charger={charger} />)} */}
-                            {selectedArea.chargers
-                                .filter(charger => charger.belongsToUser == null)
-                                .map((charger) => <ChargerEntry key={charger.id} charger={charger} />)
-                            }
-                            {selectedArea.stations.map((station) => <StationEntry key={station.id} station={station} />)}
-                        </div>
-                    </div>
-                </DashboardBox>
-            )}
+          {selectedArea != null && (
+            <DashboardBox title={selectedArea.areaName}>
+              <div className="w-full h-full overflow-y-auto">
+                <div className="w-full">
+                  {selectedArea.users.map((user) => (
+                    <UserEntry
+                      key={user.id}
+                      user={user}
+                      onChangeUser={onChangeUser}
+                    />
+                  ))}
+                  {/* {getAllChargers(selectedArea.chargers).map((charger) => <ChargerEntry key={charger.id} charger={charger} />)} */}
+                  {selectedArea.chargers
+                    .filter((charger) => charger.belongsToUser == null)
+                    .map((charger) => (
+                      <ChargerEntry key={charger.id} charger={charger} />
+                    ))}
+                  {selectedArea.stations.map((station) => (
+                    <StationEntry key={station.id} station={station} />
+                  ))}
+                </div>
+              </div>
+            </DashboardBox>
+          )}
         </div>
       </div>
       {/* <Footer /> */}

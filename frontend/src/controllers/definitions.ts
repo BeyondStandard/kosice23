@@ -18,32 +18,32 @@ export type User = {
   address: string
   lat: number
   lng: number
-    isPromoted?: boolean
+  isPromoted?: boolean
 }
 
 export type Charger = {
-    id: string
-    name: string
-    vicinity: string
-    lat: number
-    lng: number
-    rating?: number
-    user_ratings_total?: number
-    belongsToUser?: string
+  id: string
+  name: string
+  vicinity: string
+  lat: number
+  lng: number
+  rating?: number
+  user_ratings_total?: number
+  belongsToUser?: string
 }
 
 export type Station = {
-    id: string
-    title: string
-    subtitle: string
-    type: string
-    lat: number
-    lng: number
+  id: string
+  title: string
+  subtitle: string
+  type: string
+  lat: number
+  lng: number
 }
 
 export type AreaInfo = {
-    areaName: string
-    users: User[]
-    chargers: Charger[]
-    stations: Station[]
+  areaName: string
+  users: User[]
+  chargers: Charger[]
+  stations: Station[]
 }

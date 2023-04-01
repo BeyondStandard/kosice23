@@ -21,7 +21,7 @@
       "~/*": ["src/*"]
     },
     "pretty": true,
-    "types": []
+    "types": ["node"]
   },
   "include": ["src"],
   "exclude": ["node_modules"],

@@ -1,4 +1,4 @@
-import { MapItem, AreaInfo } from "~/controllers/definitions"
+import { AreaInfo, MapItem } from "~/controllers/definitions"
 
 export type MapProps = {
   prop?: string
@@ -7,5 +7,21 @@ export type MapProps = {
   stations: MapItem[]
   allItems: Record<string, unknown>
   showAreas: boolean
-    onAreaSelected: (areaInfo: AreaInfo) => void
+  onAreaSelected: (areaInfo: AreaInfo) => void
+}
+
+export type Polygon = {
+  [key: string]: JSONValue
+}
+
+export type JSONValue =
+  | string
+  | number
+  | boolean
+  | null
+  | JSONValue[]
+  | { [key: string]: JSONValue }
+
+export interface JSONObject {
+  [k: string]: JSONValue
 }

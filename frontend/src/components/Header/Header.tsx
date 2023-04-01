@@ -1,15 +1,14 @@
-import type { HeaderProps } from "./types"
-import { AppBar, Box, Link } from "@mui/material"
-// @ts-ignore
-import sixtainabilityLogo from "/src/assets/sixtainability.png"
-
+import { Box, Link } from "@mui/material"
+// import logo from "/src/assets/logo.png"
 import React from "react"
+
+import type { HeaderProps } from "./types"
 export function Header({ prop = "Header" }: HeaderProps) {
   return (
     <div>
-      <div className="flex w-full h-12 bg-orange drop-shadow-md justify-between content-center">
+      <div className="flex w-full h-12 bg-gray-600 drop-shadow-md justify-between content-center">
         <div className="w-full flex justify-between content-center mx-2">
-          <img className="h-14" src={sixtainabilityLogo} alt={"Logo"} />
+          {/* <img className="h-14" src={logo} alt={"Logo"} /> */}
           <Box
             sx={{
               display: "flex",

@@ -1,6 +1,7 @@
-import { ThemeProvider, StyledEngineProvider } from "@mui/material/styles"
-import { theme } from "~/styles/theme"
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles"
+
 import { AppRoutes } from "~/routes"
+import { theme } from "~/styles/theme"
 
 export function App() {
   return (

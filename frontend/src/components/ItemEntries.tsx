@@ -1,12 +1,13 @@
-import React from "react"
-import Accordion from "@mui/material/Accordion"
-import AccordionSummary from "@mui/material/AccordionSummary"
-import AccordionDetails from "@mui/material/AccordionDetails"
+import { faThumbsDown, faThumbsUp } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons"
+import Accordion from "@mui/material/Accordion"
+import AccordionDetails from "@mui/material/AccordionDetails"
+import AccordionSummary from "@mui/material/AccordionSummary"
+import React from "react"
 
-import { ItemType, User, Charger, Station } from "~/controllers/definitions"
 import { ItemIcon } from "~/components/ItemIcon"
+
+import { Charger, ItemType, Station, User } from "~/controllers/definitions"
 
 type UserEntryProps = {
   user: User
