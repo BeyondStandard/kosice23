@@ -6,7 +6,7 @@ from backend.config import API_KEY
 
 
 def get_google_latlng_data():
-    data = read_json("sixt_stations.json")
+    data = read_json("stations.json")
     new_data = []
     for d in data:
         address = d["subtitle"]
@@ -26,7 +26,7 @@ def get_google_latlng_data():
             print(e)
             continue
     print("length of new data", len(new_data))
-    with open(os.getcwd() + "/../../data/sixt_stations_v2.json", 'w') as f:
+    with open(os.getcwd() + "/../../data/stations_v2.json", 'w') as f:
         json.dump(new_data, f)
 
 
@@ -82,13 +82,13 @@ def combine_with_people_data():
         json.dump(people_data, f)
 
 
-def get_charging_stations():
+def get_stations():
     data = read_json("people_v3.json")
-    charging_stations = []
+    stations = []
     for d in data:
         lat = d["lat"]
         lng = d["lng"]
-        url = f"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={lat}%2C{lng}&radius=1500&type=chargingstation&keyword=chargingStation&key={API_KEY}"
+        url = f"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={lat}%2C{lng}&radius=1500&type=station&keyword=Station&key={API_KEY}"
         response = requests.get(url)
         try:
             if response.status_code == 200:
@@ -101,34 +101,19 @@ def get_charging_stations():
                 rating = response[0]['rating']
                 user_ratings_total = response[0]['user_ratings_total']
                 station = {"name": name, "lat":lat, "lng":lng, "vicinity": vicinity, "rating":rating, "user_ratings_total":user_ratings_total}
-                charging_stations.append(station)
+                stations.append(station)
             else:
                 continue
         except Exception as e:
             continue
-    print("length of new data", len(charging_stations))
-    with open(os.getcwd() + "/../../data/charging_stations.json", 'w') as f:
-        json.dump(charging_stations, f)
-
-
-def get_sixt_stations():
-    location = "Munich"
-    url = f"https://api.orange.sixt.com/v1/locations?term=Munich&vehicleType=car&type=station"
-    response = requests.get(url)
-    try:
-        if response.status_code == 200:
-            response = response.json()
-    except Exception as e:
-        print(e)
-    print("length of new data", len(response))
-    with open(os.getcwd() + "/../../data/sixt_stations.json", 'w') as f:
-        json.dump(response, f)
+    print("length of new data", len(stations))
+    with open(os.getcwd() + "/../../data/stations.json", 'w') as f:
+        json.dump(stations, f)
 
 
 if __name__ == "__main__":
     get_google_latlng_data()
-    # get_charging_stations()
+    # get_stations()
     # preprocess_coordinates()
     # generate_addresses()
     # combine_with_people_data()
-    # get_sixt_stations()

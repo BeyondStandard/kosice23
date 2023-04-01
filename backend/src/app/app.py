@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from utils.utilities import *
 
-app = FastAPI(title="Sixtainability API")
+app = FastAPI(title="HK23 API")
 
 origins = [
     "http://localhost:3000",
@@ -33,9 +33,9 @@ async def get_user(user_id: str):
     return user
 
 
-@app.get("/get_sixt_stations")
+@app.get("/get_stations")
 async def get_stations():
-    stations = read_json("sixt_stations_v2.json")
+    stations = read_json("stations_v2.json")
     return stations
 
 
